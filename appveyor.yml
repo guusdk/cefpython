@@ -14,13 +14,17 @@ environment:
 install:
   - "SET PATH=%PYTHON%;%PYTHON%\\Scripts;%PATH%"
   - pip install --upgrade -r tools/requirements.txt
+  - ps: Start-FileDownload 'https://github.com/cztomczak/cefpython/releases/download/v57-upstream/cef57_3.2987.1601.gf035232_win64.zip'
 
 before_build:
   - mkdir build
+  - 7z e cef57_3.2987.1601.gf035232_win64.zip -obuild
 
 build_script:
   - cd build
-  - echo "Building CEF..."
-  - python ../tools/automate.py --build-cef --ninja-jobs 4
+  - https://github.com/cztomczak/cefpython/releases/download/v57-upstream/cef57_3.2987.1601.gf035232_win64.zip
+  # Doesnt work? CIPD seems 'stuck'
+  # - echo "Building CEF..."
+  #- python ../tools/automate.py --build-cef --ninja-jobs 4
   - echo "Building CEF Python..."
-  - python ../tools/build.py 58.0
+  - python ../tools/build.py 57.3
