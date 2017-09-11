@@ -18,7 +18,7 @@ install:
 
 before_build:
   - mkdir build
-  - 7z e cef57_3.2987.1601.gf035232_win64.zip -obuild
+  - 7z x cef57_3.2987.1601.gf035232_win64.zip -obuild
 
 build_script:
   - cd build
