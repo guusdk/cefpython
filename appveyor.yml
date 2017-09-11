@@ -12,9 +12,9 @@ before_build:
   - mkdir build
 
 build_script:
-- cmd: >-
-    cd build
-    echo "Building CEF..."
-    python ../tools/automate.py --build-cef --ninja-jobs 4
-    echo "Building CEF Python..."
-    python ../tools/build.py 58.0
+  - cd build;
+  - echo "Building CEF...";
+  - python ../tools/automate.py --build-cef --ninja-jobs 4;
+  - echo "Building CEF Python...";
+  - python ../tools/build.py 58.0;
+  
