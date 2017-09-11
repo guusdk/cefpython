@@ -10,11 +10,13 @@ environment:
   CEF_VERSION: "3.3029.1604.g364cd86"
 
 install:
-  - "SET PATH=%PYTHON%;%PYTHON%\\Scripts;%PATH%"
+  - ps: Start-FileDownload 'https://github.com/ninja-build/ninja/releases/download/v1.7.2/ninja-win.zip'
+  - 7z x ninja-win.zip -o c:\projects\ninja
+  - "SET PATH=%PYTHON%;%PYTHON%\\Scripts;c:\\projects\\ninja;%PATH%"
   - pip install --upgrade -r tools/requirements.txt
-  - ps: Start-FileDownload 'http://opensource.spotify.com/cefbuilds/cef_binary_3.3029.1604.g364cd86_windows64.tar.bz2'
 
 before_build:
+  - ps: Start-FileDownload 'http://opensource.spotify.com/cefbuilds/cef_binary_3.3029.1604.g364cd86_windows64.tar.bz2'
   - mkdir build
   - 7z x cef_binary_3.3029.1604.g364cd86_windows64.tar.bz2
   - 7z x cef_binary_3.3029.1604.g364cd86_windows64.tar -obuild
