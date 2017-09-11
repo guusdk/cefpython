@@ -20,7 +20,7 @@ before_build:
   - mkdir build
   - 7z x cef_binary_3.3029.1604.g364cd86_windows64.tar.bz2
   - 7z x cef_binary_3.3029.1604.g364cd86_windows64.tar -obuild
-  - copy src/windows/py27/stdint.h "%LocalAppData%\Programs\Common\Microsoft\Visual C++ for Python\9.0\VC\include"
+  - copy src\windows\py27\stdint.h "%LocalAppData%\Programs\Common\Microsoft\Visual C++ for Python\9.0\VC\include"
 
 build_script:
 #  - cd build
