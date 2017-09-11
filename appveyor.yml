@@ -9,7 +9,7 @@ configuration:
   - Release
 
 environment:
-  PYTHON: "C:\\Python34-x64"
+  PYTHON: "C:\\Python27-x64"
 
 install:
   - "SET PATH=%PYTHON%;%PYTHON%\\Scripts;%PATH%"
