@@ -9,8 +9,7 @@ configuration:
   - Release
 
 environment:
-  global:
-    - PYTHON: "C:\\Python270-x64"
+  PYTHON: "C:\\Python270-x64"
 
 install:
   - "SET PATH=%PYTHON%;%PYTHON%\\Scripts;%PATH%"
