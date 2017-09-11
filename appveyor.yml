@@ -16,7 +16,8 @@ install:
 
 before_build:
   - mkdir build
-  - 7z x cef_binary_3.3029.1604.g364cd86_windows64.tar.bz2 -obuild
+  - 7z x cef_binary_3.3029.1604.g364cd86_windows64.tar.bz2
+  - 7z x cef_binary_3.3029.1604.g364cd86_windows64.tar -obuild
   - dir build
 
 build_script:
