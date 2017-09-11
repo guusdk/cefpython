@@ -5,25 +5,22 @@
 
 os: Visual Studio 2015
 
-configuration:
-  - Release
-
 environment:
   PYTHON: "C:\\Python27-x64"
+  CEF_VERSION: "3.3029.1604.g364cd86"
 
 install:
   - "SET PATH=%PYTHON%;%PYTHON%\\Scripts;%PATH%"
   - pip install --upgrade -r tools/requirements.txt
-  - ps: Start-FileDownload 'https://github.com/cztomczak/cefpython/releases/download/v57-upstream/cef57_3.2987.1601.gf035232_win64.zip'
+  - ps: Start-FileDownload 'http://opensource.spotify.com/cefbuilds/cef_binary_%CEF_VERSION%_windows64.tar.bz2'
 
 before_build:
   - mkdir build
-  - 7z x cef57_3.2987.1601.gf035232_win64.zip -obuild
+  - 7z x cef_binary_%CEF_VERSION%_windows64.tar.bz2 -obuild
 
 build_script:
   - cd build
-  # Doesnt work? CIPD seems 'stuck'
-  # - echo "Building CEF..."
-  #- python ../tools/automate.py --build-cef --ninja-jobs 4
+  - echo "Put prebuilt CEF in place..."
+  - python ../tools/automate.py --prebuilt-cef
   - echo "Building CEF Python..."
-  - python ../tools/build.py 57.3
+  - python ../tools/build.py 58.0
