@@ -9,18 +9,17 @@ configuration:
   - Release
 
 environment:
-  PYTHON: "C:\\Python27-x64"
+  PYTHON: "C:\\Python34-x64"
 
 install:
   - "SET PATH=%PYTHON%;%PYTHON%\\Scripts;%PATH%"
-  - pip install docopt
+  - pip install --upgrade -r tools/requirements.txt
 
 before_build:
   - mkdir build
 
 build_script:
   - cd build
-  - pip.exe --version
   - echo "Building CEF..."
   - python ../tools/automate.py --build-cef --ninja-jobs 4
   - echo "Building CEF Python..."
