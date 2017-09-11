@@ -1,0 +1,19 @@
+# This is a configuration file for the continuous delivery service provided
+# by AppVeyor.com. Its purpose is to automatically build the CEF Python project.
+# Please refer to https://github.com/cztomczak/cefpython
+# for more information on CEF Python.
+
+os: Visual Studio 2015
+
+configuration:
+  - Release
+
+before_build:
+  - mkdir build
+
+build:
+  - cd build
+  - echo "Building CEF..."
+  - python ../tools/automate.py --build-cef --ninja-jobs 4
+  - echo "Building CEF Python..."
+  - python ../tools/build.py 58.0
