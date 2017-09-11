@@ -9,7 +9,7 @@ configuration:
   - Release
 
 environment:
-  PYTHON: "C:\\Python270-x64"
+  PYTHON: "C:\\Python27-x64"
 
 install:
   - "SET PATH=%PYTHON%;%PYTHON%\\Scripts;%PATH%"
@@ -20,6 +20,7 @@ before_build:
 
 build_script:
   - cd build
+  - pip.exe --version
   - echo "Building CEF..."
   - python ../tools/automate.py --build-cef --ninja-jobs 4
   - echo "Building CEF Python..."
