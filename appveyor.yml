@@ -8,6 +8,9 @@ os: Visual Studio 2015
 configuration:
   - Release
 
+install:
+  - pip install docopt
+
 before_build:
   - mkdir build
 
