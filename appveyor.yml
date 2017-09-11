@@ -12,11 +12,11 @@ environment:
 install:
   - "SET PATH=%PYTHON%;%PYTHON%\\Scripts;%PATH%"
   - pip install --upgrade -r tools/requirements.txt
-  - ps: Start-FileDownload 'http://opensource.spotify.com/cefbuilds/cef_binary_$CEF_VERSION_windows64.tar.bz2'
+  - ps: Start-FileDownload 'http://opensource.spotify.com/cefbuilds/cef_binary_3.3029.1604.g364cd86_windows64.tar.bz2'
 
 before_build:
   - mkdir build
-  - 7z x cef_binary_%CEF_VERSION%_windows64.tar.bz2 -obuild
+  - 7z x cef_binary_3.3029.1604.g364cd86_windows64.tar.bz2 -obuild
 
 build_script:
   - cd build
