@@ -6,20 +6,19 @@
 os: Visual Studio 2015
 
 environment:
-  PYTHON: "C:\\Python27-x64"
-  CEF_VERSION: "3.3029.1604.g364cd86"
+  CEFVERSION: "3.3029.1604.g364cd86"
 
 install:
   - ps: Start-FileDownload 'https://github.com/ninja-build/ninja/releases/download/v1.7.2/ninja-win.zip'
   - 7z x ninja-win.zip -oc:\projects\ninja
-  - "SET PATH=%PYTHON%;%PYTHON%\\Scripts;c:\\projects\\ninja;%PATH%"
+  - "SET PATH=C:\\Python27-x64;C:\\Python27-x64\\Scripts;c:\\projects\\ninja;%PATH%"
   - pip install --upgrade -r tools/requirements.txt
 
 before_build:
-  - ps: Start-FileDownload 'http://opensource.spotify.com/cefbuilds/cef_binary_3.3029.1604.g364cd86_windows64.tar.bz2'
+  - appveyor DownloadFile http://opensource.spotify.com/cefbuilds/cef_binary_%CEFVERSION%_windows64.tar.bz2
   - mkdir build
-  - 7z x cef_binary_3.3029.1604.g364cd86_windows64.tar.bz2
-  - 7z x cef_binary_3.3029.1604.g364cd86_windows64.tar -obuild
+  - 7z x cef_binary_%CEFVERSION%_windows64.tar.bz2
+  - 7z x cef_binary_%CEFVERSION%_windows64.tar -obuild
   - copy src\windows\py27\stdint.h "%LocalAppData%\Programs\Common\Microsoft\Visual C++ for Python\9.0\VC\include"
   - dir "%LocalAppData%"
 
